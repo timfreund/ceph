@@ -268,8 +268,10 @@ bool GenericObjectMap::parse_header_key(const string &long_name,
     out->hobj.set_hash(out->get_filestore_key());
   }
 
-  if (out_coll)
-    *out_coll = coll_t::make_string_coll(coll);
+  if (out_coll) {
+    bool valid = out_coll->parse(coll);
+    assert(valid);
+  }
 
   return true;
 }
