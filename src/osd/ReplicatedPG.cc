@@ -1968,8 +1968,7 @@ void ReplicatedPG::do_proxy_read(OpRequestRef op)
 		 m->get_pg().ps(),
 		 m->get_object_locator().get_pool(),
 		 m->get_object_locator().nspace);
-  unsigned flags = CEPH_OSD_FLAG_IGNORE_CACHE | CEPH_OSD_FLAG_IGNORE_OVERLAY |
-                   CEPH_OSD_FLAG_MAP_SNAP_CLONE;
+  unsigned flags = CEPH_OSD_FLAG_IGNORE_CACHE | CEPH_OSD_FLAG_IGNORE_OVERLAY;
   dout(10) << __func__ << " Start proxy read for " << *m << dendl;
 
   ProxyReadOpRef prdop(new ProxyReadOp(op, soid, m->ops));
